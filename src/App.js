@@ -36,7 +36,8 @@ function App() {
     if (authUser) {
       const socketio = io(process.env.REACT_APP_BACKEND_URL, {
        query:{
-            userId:authUser._id
+            userId:authUser._id,
+            withCredentials: true,
           }
 
       });

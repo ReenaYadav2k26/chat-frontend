@@ -28,33 +28,33 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-   const { authUser } = useSelector(store => store.user);
-   const {socket} = useSelector(store=>store.socket);
-   const dispatch = useDispatch();
+  const { authUser } = useSelector(store => store.user);
+  const { socket } = useSelector(store => store.socket);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (authUser) {
       const socketio = io(process.env.REACT_APP_BACKEND_URL, {
-       query:{
-            userId:authUser._id,
-            withCredentials: true,
-          }
-
+        query: {
+          userId: authUser._id,
+        },
+        withCredentials: true,
       });
+
       dispatch(setSocket(socketio));
 
-      socketio?.on('getOnlineUsers', (onlineUsers)=>{
+      socketio?.on('getOnlineUsers', (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers))
       });
       return () => socketio.close();
     }
-    else{
-       if(socket){
+    else {
+      if (socket) {
         socket.close();
         dispatch(setSocket(null));
       }
     }
-  },[authUser]);
+  }, [authUser]);
 
   return (
     <div className="p-4 h-screen flex items-center justify-center">

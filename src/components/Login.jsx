@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import toast from "react-hot-toast"
 import axios from "axios";
@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setAuthUser } from '../redux/userSlice';
 
 const Login = () => {
-     const [user, setUser] = useState({
+  const [user, setUser] = useState({
     username: "",
     password: "",
   });
@@ -38,7 +38,7 @@ const Login = () => {
     })
   }
 
-    return (
+  return (
     <div className="min-w-96 mx-auto">
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100'>
         <h1 className='text-3xl font-bold text-center'>Login</h1>
@@ -68,7 +68,9 @@ const Login = () => {
           </div>
           <p className='text-center my-2'>Don't have an account? <Link to="/signup"> signup </Link></p>
           <div>
-            <button type="submit" className='btn btn-block btn-md mt-2 border border-slate-700'>Login</button>
+            <button type="submit" style={{ backgroundColor: 'blue', color: 'white' }}>
+              Login
+            </button>
           </div>
         </form>
       </div>

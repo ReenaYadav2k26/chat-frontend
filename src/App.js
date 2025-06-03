@@ -1,5 +1,5 @@
 
-import './App.css';
+import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from './components/HomePage';
 import Signup from './components/Signup';
@@ -54,7 +54,7 @@ function App() {
         dispatch(setSocket(null));
       }
     }
-  }, [authUser]);
+  }, [authUser, dispatch, socket]);
 
   return (
     <div className="p-4 h-screen flex items-center justify-center">
